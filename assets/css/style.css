@@ -113,23 +113,51 @@ h1 {
   }
 
   .weather-data .current-weather {
-    color: #fff;
+    color: #000;
     /* background: #5372F0; */
     border-radius: 0.5rem;
     padding: 20px 70px 20px 20px;
     display: flex;
     justify-content: space-between;
     border: 0.2rem solid #000;
+    
 
   }
 
-  .current-weather h2 {
+  .current-weather h3 {
     font-weight: 700;
-    font-size: 1.7rem;
+    font-size: 2.2rem;
   }
 
-  .weather-data h6 {
+  .weather-data h4 {
     margin-top: 12px;
-    font-size: 1rem;
+    font-size: 1.9rem;
     font-weight: 500;
+  }
+ 
+  
+  
+  /* Cards for 5 day weather forecast */
+  
+  
+  .five-days-forecast h5 {
+    margin: 8rem 0;
+    font-size: 2.7rem;
+    font-weight: 800;
+  }
+  .five-days-forecast .weather-cards {
+    display: flex;
+    gap: 20px;
+  }
+  .weather-cards .card {
+    color: #fff;
+    padding: 18px 16px;
+    list-style: none;
+    width: calc(100% / 5);
+    background: #6C757D;
+    border-radius: 5px;
+  }
+  .weather-cards .card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
   }
