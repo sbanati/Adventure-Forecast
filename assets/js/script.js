@@ -41,14 +41,17 @@ const retrieveCityCoordinates = function () {
 
     // get the city coordinates and name from the API response
     fetch(GeocodingApiUrl)
-        .then(res => res.json()).then(data => {
+        .then(res => res.json()).then(data => { // fetches response object data and converts to JSON format then processes JSON data so it can be used in code block below.
+           
             // error message incase array data is empty 
             if(!data.length) return alert(`Coordinates not found for ${cityName}`);
-            // grabbing the specific properties in the array element 0
+           
+            // grabbing the specific properties we are looking for in the array element 0
             const { name, lat, lon } = data[0];
-            getWeatherData(name, lat, lon);
+           
+            getWeatherData(name, lat, lon); // calls function getWeatherData
         }).catch(() => {
-            alert('Error occured while fetching the coordinates')
+            alert('Error occured while fetching the coordinates') // catch alert incase of error
 
         })
 
