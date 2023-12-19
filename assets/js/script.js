@@ -7,19 +7,52 @@ const ApiKey = 'f22020df271a2b65dbf8c5da9ccb2070'; // random generated API key f
 
 
 
-
+// Function for retrieving weather data based on parameters
 const getWeatherData = (cityName, lat, lon) => {
-
+    
+    // constructed the API URL with param placeholders
     const weatherApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ApiKey}`;
 
-    fetch(weatherApiUrl).then(res => res.json()).then(data => {
+    //Making Fetch call from API with the URL 
+    fetch(weatherApiUrl).then(res => res.json()).then(data => { // fetches response object data and converts to JSON format then processes JSON data so it can be used in code block below.
         console.log(data)
+
+        // store the individual forecast days into an Array
+        const individualForecastDays = [];
+
+        // Using the filter method on the list of forecast hours to retrieve unique forecast days
+        const fiveDayForecast = data.list.filter(forecast => {
+            
+            // create new date object using date and time information then calls .getDate method to extract the day of the month.
+            const forecastDate = new Date(forecast.dt_txt).getDate();
+
+            // check if the forecast date is not in the array already
+            if(!individualForecastDays.includes(forecastDate)) {
+                
+                // if forecast date is not, push it into the array
+                return individualForecastDays.push(forecastDate);
+            }
+
+        });   
     }).catch(() => {
         alert('Error occured while fetching the weather forecast')
 
     })
 
 }; /*!TODO We have the weather details but it gives us incriments of every 3 hours, so my next step is to sort this in a 5 day forecast. */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -63,12 +96,5 @@ const retrieveCityCoordinates = function () {
 
 
 
-
 // event listener for the click of the search button to call the function retrieveCityCoordinates
 searchButton.addEventListener('click', retrieveCityCoordinates);    
-
-
-
-
-
-
