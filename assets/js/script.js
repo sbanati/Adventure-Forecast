@@ -15,7 +15,6 @@ const getWeatherData = (cityName, lat, lon) => {
 
     //Making Fetch call from API with the URL 
     fetch(weatherApiUrl).then(res => res.json()).then(data => { // fetches response object data and converts to JSON format then processes JSON data so it can be used in code block below.
-        console.log(data)
 
         // store the individual forecast days into an Array
         const individualForecastDays = [];
@@ -32,8 +31,9 @@ const getWeatherData = (cityName, lat, lon) => {
                 // if forecast date is not, push it into the array
                 return individualForecastDays.push(forecastDate);
             }
-
         });   
+   
+            console.log(fiveDayForecast);
     }).catch(() => {
         alert('Error occured while fetching the weather forecast')
 
