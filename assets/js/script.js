@@ -63,12 +63,13 @@ const getWeatherData = (cityName, lat, lon) => {
             }
         });   
    
-            console.log(fiveDayForecast);
+            weatherCardsDiv.innerHTML = ''; // Clear existing cards content 
 
             // Generating a weather card for each forecast day
             fiveDayForecast.forEach(weatherItem => {
                 console.log('Selected weatherCardsDiv:', weatherCardsDiv);
                 weatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(weatherItem));
+                
                 
             });
 
