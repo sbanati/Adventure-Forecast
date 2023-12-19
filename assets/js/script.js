@@ -8,7 +8,7 @@ const ApiKey = 'f22020df271a2b65dbf8c5da9ccb2070'; // random generated API key f
 
 
 
-const getWeatherData = function (cityName, lat, lon)  {
+const getWeatherData = (cityName, lat, lon) => {
 
     const weatherApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ApiKey}`;
 
