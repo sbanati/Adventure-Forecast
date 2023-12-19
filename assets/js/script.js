@@ -1,9 +1,39 @@
-const currentWeatherDiv = document.querySelector('.current-weather'); // assigning HTML element to the const variable with the .current-weather selector
+// const currentWeatherDiv = document.querySelector('.current-weather'); // assigning HTML element to the const variable with the .current-weather selector
 const weatherCardsDiv = document.querySelector('.weather-cards'); // assigning HTML element to the const variable with the .weather-cards
 const searchButton = document.querySelector('.search-btn'); // assigning HTML button element to the const variable with the .search-btn
 const cityInput = document.querySelector('.city-input'); // assigning HTML input element to the const variable with the .city-input
 
+
+
 const ApiKey = 'f22020df271a2b65dbf8c5da9ccb2070'; // random generated API key for the OpenWeatherMap API 
+
+
+
+
+
+
+
+
+const createWeatherCard = (weatherItem) => {
+    
+         // Check if weatherItem has the expected properties
+    if (!weatherItem || !weatherItem.dt_txt || !weatherItem.weather || !weatherItem.weather[0]) {
+        console.error('Invalid weatherItem object:', weatherItem);
+        return '';  // Return an empty string to prevent rendering an invalid card
+
+    }
+    
+    
+    return `<li class="card">
+                <h3>(${weatherItem.dt_txt.split('')[0]})</h3> 
+                <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather-icon">
+                <h4>Temperature: ${(weatherItem.main.temp - 273.15).toFixed(0)}°C</h4>
+                <h4>Wind: ${weatherItem.wind.speed} M/S</h4>
+                <h4>Humidity: ${weatherItem.main.humidity} %</h4>
+                </li>`;
+
+};
+
 
 
 
@@ -34,25 +64,20 @@ const getWeatherData = (cityName, lat, lon) => {
         });   
    
             console.log(fiveDayForecast);
+
+            // Generating a weather card for each forecast day
+            fiveDayForecast.forEach(weatherItem => {
+                console.log('Selected weatherCardsDiv:', weatherCardsDiv);
+                weatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(weatherItem));
+                
+            });
+
     }).catch(() => {
-        alert('Error occured while fetching the weather forecast')
+        alert('Baboon: Error occured while fetching the weather forecast')
 
     })
 
-}; /*!TODO We have the weather details but it gives us incriments of every 3 hours, so my next step is to sort this in a 5 day forecast. */
-
-
-
-
-
-
-
-
-
-
-
-
-
+}; 
 
 
 
