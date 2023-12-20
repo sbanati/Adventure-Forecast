@@ -13,7 +13,6 @@ const ApiKey = 'f22020df271a2b65dbf8c5da9ccb2070'; // personal generated API key
 
 
 
-
 // function to retrieve day of the week from datestring
 const getDayOfWeek = ( dateString => {
     
@@ -161,6 +160,34 @@ const retrieveCityCoordinates = function () {
 
     
 };
+
+
+
+
+
+const updateHistoryButtons = () => {
+    /*
+    1a) Access the search history array and filter unique searches so duplicates wont populate the buttons. Can use the SET method since it ensures unique properties. 
+    2b) Iterate over the new created SET , and then create a button element for each city in the array
+    3c) Set the text content for the buttons to match city names searched 
+    4d) Add css class to the button element for styling 
+    5e) Add click event to the button element , mimic the search event behavior 
+            - When button is clicked, 
+            -Sets the City name in the search bar and triggers the search
+    6f) Append the dynamically generated buttons to the historyButtonsContainer 
+    7g) Call the function updateHistoryButtons() 
+     */
+
+
+
+
+
+
+
+}
+
+
+
 
 
 
