@@ -3,9 +3,10 @@ const weatherCardsDiv = document.querySelector('.weather-cards'); // assigning H
 const searchButton = document.querySelector('.search-btn'); // assigning HTML button element to the const variable with the .search-btn
 const cityInput = document.querySelector('.city-input'); // assigning HTML input element to the const variable with the .city-input
 const historyButtonsContainer = document.querySelector('.history-buttons'); // assigning HTML element to the const variable with the .history-buttons
-const searchHistory = []; // array that will contain the search History values 
-const searchHistoryKey = 'searchHistory'; // searchHistory string value is assigned to the searchHistory key, used for storing and retrieving search history
 
+const searchHistoryKey = 'searchHistory'; // searchHistory string value is assigned to the searchHistory key, used for storing and retrieving search history
+// Retrieve the current search history from local storage or initialize an empty array
+let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
 
 
 const ApiKey = 'f22020df271a2b65dbf8c5da9ccb2070'; // personal generated API key for the OpenWeatherMap API 
@@ -108,7 +109,30 @@ const getWeatherData = (cityName, lat, lon) => {
                     weatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index));
                 }  
             });
-    // catch any errors that occur during the fetching of the weather data
+    
+            // Convert the city name to lowercase for case-insensitive comparison
+            const lowercaseCityName = cityName.toLowerCase();
+
+         // Checks to see if the city already exists in the search history
+         if (!searchHistory.includes(lowercaseCityName)) {
+
+            // Adding the searched city to the history
+            searchHistory.push(lowercaseCityName);
+
+            // Save the updated history to local storage
+            localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+
+         }
+         
+         
+    
+    
+    
+    
+    
+    
+    
+         // catch any errors that occur during the fetching of the weather data
     }).catch(() => {
         alert('Baboon: Error occured while fetching the weather forecast')
 
