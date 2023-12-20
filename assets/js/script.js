@@ -4,7 +4,7 @@ const searchButton = document.querySelector('.search-btn'); // assigning HTML bu
 const cityInput = document.querySelector('.city-input'); // assigning HTML input element to the const variable with the .city-input
 const historyButtonsContainer = document.querySelector('.history-buttons'); // assigning HTML element to the const variable with the .history-buttons
 
-const searchHistoryKey = 'searchHistory'; // searchHistory string value is assigned to the searchHistory key, used for storing and retrieving search history
+
 // Retrieve the current search history from local storage or initialize an empty array
 let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
 
@@ -119,20 +119,18 @@ const getWeatherData = (cityName, lat, lon) => {
             // Adding the searched city to the history
             searchHistory.push(lowercaseCityName);
 
+            // Limit the array to keep only the latest 8 items
+            searchHistory = searchHistory.slice(-8);
+
             // Save the updated history to local storage
             localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
 
-         }
+            updateHistoryButtons();
+        }
          
-         
     
     
-    
-    
-    
-    
-    
-         // catch any errors that occur during the fetching of the weather data
+       // catch any errors that occur during the fetching of the weather data
     }).catch(() => {
         alert('Baboon: Error occured while fetching the weather forecast')
 
@@ -153,11 +151,6 @@ const retrieveCityCoordinates = function () {
     console.log(cityName) // checks if city name entered in box shows a value. 
 
 
-    // Add the searched city to the history
-    searchHistory.push(cityName);
-
-    // Save the updated history to local storage
-    localStorage.setItem(searchHistoryKey, JSON.stringify(searchHistory));
 
   
 
@@ -185,37 +178,31 @@ const retrieveCityCoordinates = function () {
 
 
 
-
+// Generates the search history buttons
 const updateHistoryButtons = () => {
-    /*
-    1a) Access the search history array and filter unique searches so duplicates wont populate the buttons. Can use the SET data structure since it ensures unique properties. 
-    2b) Iterate over the new created SET , and then create a button element for each city in the array
-    3c) Set the text content for the buttons to match city names searched 
-    4d) Add css class to the button element for styling 
-    5e) Add click event to the button element , mimic the search event behavior 
-            - When button is clicked, 
-            -Sets the City name in the search bar and triggers the search
-    6f) Append the dynamically generated buttons to the historyButtonsContainer 
-    7g) Call the function updateHistoryButtons() 
-     */
+    
+    
+     // Clear existing buttons
+     historyButtonsContainer.innerHTML = '';
 
-/* create a function (Y) that accepts cityname as input and populates the DOM 
+     // Create and append buttons for unique citys in search history
+     searchHistory.forEach(city => {
+        const button = document.createElement('button');
+        button.textContent = city;
 
- on click of the search button call function (x), get the input value and call function (y) with cityName fron input.value
+        // Add existing CSS class to the buttons
+        button.classList.add('history-button');
+        
+        // When the button is clicked execute the code block
+        button.addEventListener('click' , () => {
+            cityInput.value = city; // copies city name in search bar functionality
+            retrieveCityCoordinates();// Triggers search
+        });
 
- for side buttons, when adding eventlisteners , Get cityName by using event.target.innerHTML and then call function (y) with cityNam
+        historyButtonsContainer.appendChild(button);
+     });
 
-function Y manipulate DOM elements 
-
-init function should be intermediate function for the click event search button. Only accessed when search button is clicked. 
-
-*/
-
-
-
-
-
-}
+};
 
 
 
@@ -224,6 +211,10 @@ init function should be intermediate function for the click event search button.
 
 
 
-
+updateHistoryButtons();
 // event listener for the click of the search button to call the function retrieveCityCoordinates
 searchButton.addEventListener('click', retrieveCityCoordinates);    
+
+
+
+

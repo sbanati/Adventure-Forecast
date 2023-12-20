@@ -104,6 +104,7 @@ h1 {
   }
   .weather-input .history-button {
     background: #6C757D;
+    margin: 4px 
   }
   .weather-input .history-button:hover {
     background: #32383d;
