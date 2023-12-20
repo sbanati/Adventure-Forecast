@@ -25,9 +25,11 @@ const getDayOfWeek = ( dateString => {
     
     // retrieve the day index from date object
     const dayIndex = date.getDay();
+
+    const dateNumber = date.getDate()
     
     // return the day of the week based on the index 
-    return daysOfWeek[dayIndex];
+    return `${daysOfWeek[dayIndex]} ${dateNumber}`;
 
 })
 
