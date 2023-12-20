@@ -33,14 +33,14 @@ const getDayOfWeek = ( dateString => {
 
 
 
-// generate HTML for the data content  of the weather cards 
+// generate HTML for the data content  of the weather cards  (add date and year for the dayoftheweek data)
 const createWeatherCard = (cityName, weatherItem, index) => {
     if(index === 0) { // HTML of the main weather display
         return ` <div class="details">
-                    <h3>${cityName} (${getDayOfWeek(weatherItem.dt_txt)})</h3> 
-                    <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
-                    <h4>Temp: ${(weatherItem.main.temp - 273.15).toFixed(0)}°C</h4>
-                    <h4>Feels Like: ${(weatherItem.main.feels_like - 273.15).toFixed(0)}°C</h4>
+                    <h3>${cityName} (${getDayOfWeek(weatherItem.dt_txt)})</h3>  
+                    <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon"> 
+                    <h4>Temp: ${weatherItem.main.temp.toFixed(0)}°C</h4>
+                    <h4>Feels Like: ${weatherItem.main.feels_like.toFixed(0)}°C</h4>
                     <h4>Wind: ${weatherItem.wind.speed} M/S</h4>
                     <h4>Humidity: ${weatherItem.main.humidity} %</h4>
                     </div>`;
@@ -48,8 +48,8 @@ const createWeatherCard = (cityName, weatherItem, index) => {
         return `<li class="card">
                 <h3>${getDayOfWeek(weatherItem.dt_txt)}</h3> 
                 <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather-icon">
-                <h4>Temp: ${(weatherItem.main.temp - 273.15).toFixed(0)}°C</h4>
-                <h4>Feels Like: ${(weatherItem.main.feels_like - 273.15).toFixed(0)}°C</h4>
+                <h4>Temp: ${weatherItem.main.temp.toFixed(0)}°C</h4>
+                <h4>Feels Like: ${weatherItem.main.feels_like.toFixed(0)}°C</h4>
                 <h4>Wind: ${weatherItem.wind.speed} M/S</h4>
                 <h4>Humidity: ${weatherItem.main.humidity} %</h4>
                 </li>`;
@@ -65,7 +65,7 @@ const createWeatherCard = (cityName, weatherItem, index) => {
 const getWeatherData = (cityName, lat, lon) => {
     
     // constructed the API URL with param placeholders
-    const weatherApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ApiKey}`;
+    const weatherApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ApiKey}&units=metric`;
 
     
 
@@ -137,10 +137,7 @@ const retrieveCityCoordinates = function () {
 
   
 
-
-
-
-    const GeocodingApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${ApiKey}`;
+    const GeocodingApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${ApiKey}`; // refactor 
 
     // get the city coordinates and name from the API response
     fetch(GeocodingApiUrl)
@@ -167,7 +164,7 @@ const retrieveCityCoordinates = function () {
 
 const updateHistoryButtons = () => {
     /*
-    1a) Access the search history array and filter unique searches so duplicates wont populate the buttons. Can use the SET method since it ensures unique properties. 
+    1a) Access the search history array and filter unique searches so duplicates wont populate the buttons. Can use the SET data structure since it ensures unique properties. 
     2b) Iterate over the new created SET , and then create a button element for each city in the array
     3c) Set the text content for the buttons to match city names searched 
     4d) Add css class to the button element for styling 
@@ -178,7 +175,17 @@ const updateHistoryButtons = () => {
     7g) Call the function updateHistoryButtons() 
      */
 
+/* create a function (Y) that accepts cityname as input and populates the DOM 
 
+ on click of the search button call function (x), get the input value and call function (y) with cityName fron input.value
+
+ for side buttons, when adding eventlisteners , Get cityName by using event.target.innerHTML and then call function (y) with cityNam
+
+function Y manipulate DOM elements 
+
+init function should be intermediate function for the click event search button. Only accessed when search button is clicked. 
+
+*/
 
 
 
