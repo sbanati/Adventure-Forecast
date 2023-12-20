@@ -2,13 +2,13 @@ const currentWeatherDiv = document.querySelector('.current-weather'); // assigni
 const weatherCardsDiv = document.querySelector('.weather-cards'); // assigning HTML element to the const variable with the .weather-cards
 const searchButton = document.querySelector('.search-btn'); // assigning HTML button element to the const variable with the .search-btn
 const cityInput = document.querySelector('.city-input'); // assigning HTML input element to the const variable with the .city-input
-const historyButtonsContainer = document.querySelector('.history-buttons');
-const searchHistory = [];
-const searchHistoryKey = 'searchHistory';
+const historyButtonsContainer = document.querySelector('.history-buttons'); // assigning HTML element to the const variable with the .history-buttons
+const searchHistory = []; // array that will contain the search History values 
+const searchHistoryKey = 'searchHistory'; // searchHistory string value is assigned to the searchHistory key, used for storing and retrieving search history
 
 
 
-const ApiKey = 'f22020df271a2b65dbf8c5da9ccb2070'; // random generated API key for the OpenWeatherMap API 
+const ApiKey = 'f22020df271a2b65dbf8c5da9ccb2070'; // personal generated API key for the OpenWeatherMap API 
 
 
 
@@ -20,10 +20,10 @@ const getDayOfWeek = ( dateString => {
     //Array of days of the week
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     
-    // create a new date object using the date string
+    // create a new date object using the date string information 
     const date = new Date(dateString); 
     
-    // retrieve the day index 
+    // retrieve the day index from date object
     const dayIndex = date.getDay();
     
     // return the day of the week based on the index 
@@ -41,6 +41,7 @@ const createWeatherCard = (cityName, weatherItem, index) => {
                     <h3>${cityName} (${getDayOfWeek(weatherItem.dt_txt)})</h3> 
                     <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
                     <h4>Temp: ${(weatherItem.main.temp - 273.15).toFixed(0)}°C</h4>
+                    <h4>Feels Like: ${(weatherItem.main.feels_like - 273.15).toFixed(0)}°C</h4>
                     <h4>Wind: ${weatherItem.wind.speed} M/S</h4>
                     <h4>Humidity: ${weatherItem.main.humidity} %</h4>
                     </div>`;
@@ -49,6 +50,7 @@ const createWeatherCard = (cityName, weatherItem, index) => {
                 <h3>${getDayOfWeek(weatherItem.dt_txt)}</h3> 
                 <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather-icon">
                 <h4>Temp: ${(weatherItem.main.temp - 273.15).toFixed(0)}°C</h4>
+                <h4>Feels Like: ${(weatherItem.main.feels_like - 273.15).toFixed(0)}°C</h4>
                 <h4>Wind: ${weatherItem.wind.speed} M/S</h4>
                 <h4>Humidity: ${weatherItem.main.humidity} %</h4>
                 </li>`;
@@ -60,7 +62,7 @@ const createWeatherCard = (cityName, weatherItem, index) => {
 
 
 
-// Function for retrieving weather data based on parameters
+// Function for retrieving weather data based on parameters to start building 5 day forecast
 const getWeatherData = (cityName, lat, lon) => {
     
     // constructed the API URL with param placeholders
@@ -100,15 +102,14 @@ const getWeatherData = (cityName, lat, lon) => {
                 // check to see if its the first day 
                 if(index === 0) {
                      console.log('Current Day Weather Item:', weatherItem);
-                    currentWeatherDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index));
+                    // Insert the HTML content for the CURRENT days weather into 'currentWeatherDiv'
+                     currentWeatherDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index));
                 } else {
+                    // Insert the HTML content for the fivedays weather into the 'weatherCardsDiv'
                     weatherCardsDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index));
-                }
-                
-                
-                
+                }  
             });
-
+    // catch any errors that occur during the fetching of the weather data
     }).catch(() => {
         alert('Baboon: Error occured while fetching the weather forecast')
 
@@ -135,7 +136,7 @@ const retrieveCityCoordinates = function () {
     // Save the updated history to local storage
     localStorage.setItem(searchHistoryKey, JSON.stringify(searchHistory));
 
-   
+  
 
 
 
@@ -146,7 +147,7 @@ const retrieveCityCoordinates = function () {
     fetch(GeocodingApiUrl)
         .then(res => res.json()).then(data => { // fetches response object data and converts to JSON format then processes JSON data so it can be used in code block below.
            
-            // error message incase array data is empty 
+            // error message incase array data is empty will return a alert message
             if(!data.length) return alert(`Coordinates not found for ${cityName}`);
            
             // grabbing the specific properties we are looking for in the array element 0
@@ -154,13 +155,12 @@ const retrieveCityCoordinates = function () {
            
             getWeatherData(name, lat, lon); // calls function getWeatherData
         }).catch(() => {
-            alert('Error occured while fetching the coordinates') // catch alert incase of error
+            alert('Horse: Error occured while fetching the coordinates') // catch alert incase of error
 
         })
 
     
 };
-
 
 
 

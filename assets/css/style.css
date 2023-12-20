@@ -88,7 +88,7 @@ h1 {
 
 .weather-input button {
     width: 100%;
-    padding: 10px 0;
+    padding: 1rem 0;
     cursor: pointer;
     outline: none;
     border: none;
@@ -97,15 +97,16 @@ h1 {
     color: #fff;
     background: #58AAF4;
     transition: 0.2s ease;
+    /* margin: 4px 8px; */
   }
   .weather-input .search-btn:hover {
     background: #053B66;
   }
-  .weather-input .history-btn {
+  .weather-input .history-button {
     background: #6C757D;
   }
-  .weather-input .history-btn:hover {
-    background: #5c636a;
+  .weather-input .history-button:hover {
+    background: #32383d;
   }
 
   .weather-data {
@@ -140,7 +141,7 @@ h1 {
   
   
   .five-days-forecast h5 {
-    margin: 8rem 0;
+    margin: 5rem 0;
     font-size: 2.7rem;
     font-weight: 500;
   }
@@ -169,3 +170,18 @@ h1 {
 .weather-cards .card h4 {
   font-size: 1.6rem;
 }
+
+/* .history-button {
+  width: 100%;
+  padding: 10px 0;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 2rem;
+  color: #fff;
+  background: #58AAF4;
+  transition: 0.2s ease;
+} */
+
+
