@@ -51,6 +51,7 @@ const getWeatherData = (cityName, lat, lon) => {
     // constructed the API URL with param placeholders
     const weatherApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ApiKey}`;
 
+    
 
     //Making Fetch call from API with the URL 
     fetch(weatherApiUrl).then(res => res.json()).then(data => { // fetches response object data and converts to JSON format then processes JSON data so it can be used in code block below.
