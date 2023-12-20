@@ -2,16 +2,31 @@ const currentWeatherDiv = document.querySelector('.current-weather'); // assigni
 const weatherCardsDiv = document.querySelector('.weather-cards'); // assigning HTML element to the const variable with the .weather-cards
 const searchButton = document.querySelector('.search-btn'); // assigning HTML button element to the const variable with the .search-btn
 const cityInput = document.querySelector('.city-input'); // assigning HTML input element to the const variable with the .city-input
+const historyButtonsContainer = document.querySelector('.history-buttons');
+const searchHistory = [];
+const searchHistoryKey = 'searchHistory';
 
 
 
 const ApiKey = 'f22020df271a2b65dbf8c5da9ccb2070'; // random generated API key for the OpenWeatherMap API 
 
-// function to retrieve day of the week 
+
+
+
+
+// function to retrieve day of the week from datestring
 const getDayOfWeek = ( dateString => {
+    
+    //Array of days of the week
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const date = new Date( dateString); 
+    
+    // create a new date object using the date string
+    const date = new Date(dateString); 
+    
+    // retrieve the day index 
     const dayIndex = date.getDay();
+    
+    // return the day of the week based on the index 
     return daysOfWeek[dayIndex];
 
 })
@@ -19,7 +34,7 @@ const getDayOfWeek = ( dateString => {
 
 
 
-
+// generate HTML for the data content  of the weather cards 
 const createWeatherCard = (cityName, weatherItem, index) => {
     if(index === 0) { // HTML of the main weather display
         return ` <div class="details">
@@ -82,7 +97,7 @@ const getWeatherData = (cityName, lat, lon) => {
 
             // Generating a weather card for each forecast day
             fiveDayForecast.forEach((weatherItem, index) => {
-
+                // check to see if its the first day 
                 if(index === 0) {
                      console.log('Current Day Weather Item:', weatherItem);
                     currentWeatherDiv.insertAdjacentHTML("beforeend", createWeatherCard(cityName, weatherItem, index));
@@ -113,6 +128,18 @@ const retrieveCityCoordinates = function () {
 
     console.log(cityName) // checks if city name entered in box shows a value. 
 
+
+    // Add the searched city to the history
+    searchHistory.push(cityName);
+
+    // Save the updated history to local storage
+    localStorage.setItem(searchHistoryKey, JSON.stringify(searchHistory));
+
+   
+
+
+
+
     const GeocodingApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${ApiKey}`;
 
     // get the city coordinates and name from the API response
@@ -133,6 +160,7 @@ const retrieveCityCoordinates = function () {
 
     
 };
+
 
 
 
