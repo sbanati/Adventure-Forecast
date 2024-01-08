@@ -12,10 +12,10 @@
     <img src="assets/img/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h1 align="center">The GOAT Weather Dash</h1>
+<h1 align="center">Adventure|Forecast</h1>
 
   <p align="center">
-    A simple weather dashboard web application to give you a 5 day forecast of any city searched . 
+    The only weather dash app you will need when planning your trips to any destination . 
     <br />
     <a href="https://github.com/sbanati/minimal_day_planner"><strong>Explore the docs »</strong></a>
     <br />
