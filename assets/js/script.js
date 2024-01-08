@@ -44,7 +44,7 @@ const createWeatherCard = (cityName, weatherItem, index) => {
                     <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon"> 
                     <h4>Temp: ${weatherItem.main.temp.toFixed(0)}°C</h4>
                     <h4>Feels Like: ${weatherItem.main.feels_like.toFixed(0)}°C</h4>
-                    <h4>Wind: ${weatherItem.wind.speed} M/S</h4>
+                    <h4>Wind: ${weatherItem.wind.speed} Km/h</h4>
                     <h4>Humidity: ${weatherItem.main.humidity} %</h4>
                     </div>`;
     } else {  // HTML for the 5 day forecast card 
@@ -143,8 +143,6 @@ const getWeatherData = (cityName, lat, lon) => {
 
 
 
-
-
 // function to get the city coordinates and name from the API response 
 const retrieveCityCoordinates = function () {
     const cityName = cityInput.value.trim(); // get the name of the city entered in the box and pass it to cityName const. Input is a value. 
@@ -205,7 +203,6 @@ const updateHistoryButtons = () => {
      });
 
 };
-
 
 
 

@@ -21,7 +21,6 @@ h1 {
     background: #58AAF4;
     background: linear-gradient(to right, #58AAF4, #053B66);
 
-    
 
 }
 
@@ -172,17 +171,5 @@ h1 {
   font-size: 1.6rem;
 }
 
-/* .history-button {
-  width: 100%;
-  padding: 10px 0;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  border-radius: 4px;
-  font-size: 2rem;
-  color: #fff;
-  background: #58AAF4;
-  transition: 0.2s ease;
-} */
 
 
