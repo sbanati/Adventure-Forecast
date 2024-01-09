@@ -53,7 +53,7 @@ const createWeatherCard = (cityName, weatherItem, index) => {
                 <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather-icon">
                 <h4>Temp: ${weatherItem.main.temp.toFixed(0)}°C</h4>
                 <h4>Feels Like: ${weatherItem.main.feels_like.toFixed(0)}°C</h4>
-                <h4>Wind: ${weatherItem.wind.speed} M/S</h4>
+                <h4>Wind: ${weatherItem.wind.speed} Km/h</h4>
                 <h4>Humidity: ${weatherItem.main.humidity} %</h4>
                 </li>`;
 
@@ -203,8 +203,6 @@ const updateHistoryButtons = () => {
      });
 
 };
-
-
 
 
 
