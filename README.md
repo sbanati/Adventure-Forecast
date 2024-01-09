@@ -17,14 +17,14 @@
   <p align="center">
     The only weather dash app you will need when planning your trips to any destination . 
     <br />
-    <a href="https://github.com/sbanati/minimal_day_planner"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/sbanati/Adventure-Forecast"><strong>Explore the docs »</strong></a>
     <br />
     <br />
 
     
   <a href="https://sbanati.github.io/minimal_day_planner/">View Demo</a>
     
-  <img src="screenshots/screenshot1.png" alt="rectangles with the time on the left and save icon on the right">
+  <img src="img/screenshot1.png" alt="search box with empty weather display">
 
   </p>
 </div>
