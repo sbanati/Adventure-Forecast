@@ -22,7 +22,7 @@
     <br />
 
     
-  <a href="https://sbanati.github.io/minimal_day_planner/">View Demo</a>
+  <a href="https://sbanati.github.io/Adventure-Forecast/">View Demo</a>
     
   <img src="assets/img/screenshot1.png" alt="search box with weather display and 5 day forecast in blue cards at the bottom of the screen">
 
@@ -91,7 +91,7 @@ I was told to use the openweather API to retrieve weather data. I was also taske
 ## Getting Started
 
  <h3>For end users</h3> 
-https://sbanati.github.io/minimal_day_planner/  <br>
+https://sbanati.github.io/Adventure-Forecast/  <br>
 
 
 
