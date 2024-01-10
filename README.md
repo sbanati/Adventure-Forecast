@@ -17,14 +17,14 @@
   <p align="center">
     The only weather dash app you will need when planning your trips to any destination . 
     <br />
-    <a href="https://github.com/sbanati/minimal_day_planner"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/sbanati/Adventure-Forecast"><strong>Explore the docs »</strong></a>
     <br />
     <br />
 
     
-  <a href="https://sbanati.github.io/minimal_day_planner/">View Demo</a>
+  <a href="https://sbanati.github.io/Adventure-Forecast/">View Demo</a>
     
-  <img src="screenshots/screenshot1.png" alt="rectangles with the time on the left and save icon on the right">
+  <img src="assets/img/screenshot1.png" alt="search box with weather display and 5 day forecast in blue cards at the bottom of the screen">
 
   </p>
 </div>
@@ -60,11 +60,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project is a Javascript challenge where I was given a starter code for a simple calender application. The user in mind can be anyone,
-but it is designed for someone with a typical working day schedule of 9am - 5pm. 
+This project is a Javascript challenge where I was tasked with building a weather dashboard that will run in the browser and contain dynamically updated HTML and CSS. It can be used to check weather daily, or for the week when thinking of longer term situations. 
 <br><br>
-I was given an HTML/CSS/and Java file that had 9am - 11am. I was tasked with coding the GUI elements and the logic. I also needed to add some save functionality using localstorage. The starter code provided used the Day.js library to work with date and time. 
-I was given freedom to use any Javascript solution to handle the functionality. The project was powered by dynamically updated HTML and CSS powered by jQuery
+I was told to use the openweather API to retrieve weather data. I was also tasked with utilizing localStorage features to store any persistent data. I was given freedom to use any Javascript solution to handle the functionality. The project was powered by dynamically updated HTML and CSS powered by jQuery
 
 
 
@@ -93,7 +91,7 @@ I was given freedom to use any Javascript solution to handle the functionality. 
 ## Getting Started
 
  <h3>For end users</h3> 
-https://sbanati.github.io/minimal_day_planner/  <br>
+https://sbanati.github.io/Adventure-Forecast/  <br>
 
 
 
@@ -103,7 +101,7 @@ For anyone wanting to contribute <br>
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/sbanati/minimal_day_planner
+   git clone https://github.com/sbanati/Adventure-Forecast.git
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -113,9 +111,10 @@ For anyone wanting to contribute <br>
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<h3>gif of the day planner running. You can see the user testing the save functionality.</h3>
+<h3>gif of the Adventure-Forecast running. You can see the user testing the save functionality.</h3>
 
-![planner_gif](https://github.com/sbanati/minimal_day_planner/assets/149754544/a3551886-ea6f-4310-aeb7-1c5f27347632)
+![dashdemo](https://github.com/sbanati/Adventure-Forecast/assets/149754544/91d372c3-8be8-42b8-9167-7e883cb07413)
+
 
 
 
@@ -132,9 +131,9 @@ For anyone wanting to contribute <br>
 
 <h3>Possible features</h3>
 
-* Adding functionality to go beyond the 9-5 and create entries for the future
-* Changing the GUI to a broader calender , and then each box for a day can be interacted with leading to the 9-5 GUI. 
-
+* Adding functionality to clear the history with a clear button
+* Adding a light and dark Mode. 
+* Adding more weather forecast coverage via cards 
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -162,7 +161,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 <!-- ACKNOWLEDGEMENT -->
 ## Acknowledgement
-* Practiced pair programming with Arkaw.
+* Practiced pair programming with Salvatore.
 
 
 
@@ -176,7 +175,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 Your Name - [@twitter_TherealSLVR](https://twitter.com/TherealSLVR) - smbanati@gmail.com
 
-Project Link: https://github.com/sbanati/minimal_day_planner
+Project Link: https://github.com/sbanati/Adventure-Forecast
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -187,6 +186,8 @@ Project Link: https://github.com/sbanati/minimal_day_planner
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 References:
 * https://dev.to/envoy_/150-badges-for-github-pnk#skills (for badges)
-* https://www.flaticon.com/free-icon/password_9177799 (for logo)
+* https://www.flaticon.com/free-icon/weather-app_4052984 (for logo)
 * https://github.com/othneildrew/Best-README-Template (best readme template, given to me by the Grader from challenge 1!😊)
-* https://www.youtube.com/watch?v=cELVC0LMC5w&ab_channel=JavaGuides (used this guide to help me as I was stuck on localstorage for a little)
+* https://github.com/sbanati/CodeQuizPro (used my previous project to remember the localStorage functionality)
+* Used the Expert Learning Assistant when I was stuck
+* My TA Sachin helped me talk through the workflow of the project 
