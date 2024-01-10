@@ -68,7 +68,7 @@ const createWeatherCard = (cityName, weatherItem, index) => {
 const getWeatherData = (cityName, lat, lon) => {
     
     // constructed the API URL with param placeholders
-    const weatherApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ApiKey}&units=metric`;
+    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ApiKey}&units=metric`;
 
     
 
@@ -154,7 +154,8 @@ const retrieveCityCoordinates = function () {
 
   
 
-    const GeocodingApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${ApiKey}`; // refactor 
+    const GeocodingApiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${ApiKey}`;
+
 
     // get the city coordinates and name from the API response
     fetch(GeocodingApiUrl)
